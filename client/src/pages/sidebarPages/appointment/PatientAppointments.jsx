@@ -1,10 +1,10 @@
-import { getPatientsAppointment } from "@/api/appointment"; 
+import { getPatientsAppointment } from "@/api/appointment";
 import ErrorAlert from "@/component/ErrorAlert";
-import { SkeletonTable } from "@/component/LazyLoader"; 
+import { SkeletonTable } from "@/component/LazyLoader";
 import PageWrapper from "@/component/PageWrapper";
 import Paginate from "@/component/Paginate";
 import Search from "@/component/Search";
-import { useAuth } from "@/contextStore/Index"; 
+import { useAuth } from "@/contextStore/Index";
 import BookAppointment from "@/features/appointments/patients/BookAppointment";
 import Filter from "@/features/appointments/patients/Filter";
 import useMetaArgs from "@/hooks/useMeta";
@@ -12,9 +12,7 @@ import usePaginate from "@/hooks/usePaginate";
 import { useQuery } from "@tanstack/react-query";
 import React, { lazy, Suspense } from "react";
 import { useSearchParams } from "react-router";
-const Table = lazy(() =>
-  import("@/features/appointments/patients/Table")
-);
+const Table = lazy(() => import("@/features/appointments/patients/Table"));
 
 export default function PatientAppointments() {
   useMetaArgs({
@@ -47,7 +45,6 @@ export default function PatientAppointments() {
     queryFn: () => getPatientsAppointment(searchParams, accessToken), //it helps run this function when user search on the search bar
   });
 
-
   const { handlePageChange, totalPages, hasMore, currentPage } = usePaginate({
     totalPages: data?.data?.data?.meta?.totalPages || 1,
     hasMore: data?.data?.data?.meta?.hasMore || false,
@@ -79,23 +76,17 @@ export default function PatientAppointments() {
             </div>
           ) : (
             <>
-              {appointments?.length > 0 ? (
-                <>
-                  <Suspense fallback={<SkeletonTable />}>
-                    <Table appointments={appointments} />
-                  </Suspense>
-                  <Paginate
-                    totalPages={totalPages}
-                    hasMore={hasMore}
-                    handlePageChange={handlePageChange}
-                    currentPage={currentPage}
-                  />
-                </>
-              ) : (
-                <p className="mt-6 font-semibold text-center">
-                  No appointments found
-                </p>
-              )}
+              <>
+                <Suspense fallback={<SkeletonTable />}>
+                  <Table appointments={appointments} />
+                </Suspense>
+                <Paginate
+                  totalPages={totalPages}
+                  hasMore={hasMore}
+                  handlePageChange={handlePageChange}
+                  currentPage={currentPage}
+                />
+              </>
             </>
           )}
         </>

@@ -1,13 +1,13 @@
 import { getAllAppointments } from "@/api/appointment";
-import { SkeletonTable } from "@/component/LazyLoader"; 
+import { SkeletonTable } from "@/component/LazyLoader";
 import PageWrapper from "@/component/PageWrapper";
 import Paginate from "@/component/Paginate";
 import Search from "@/component/Search";
 import Table from "@/features/appointments/admin/Table";
 import Filter from "@/features/appointments/patients/Filter";
 import usePaginate from "@/hooks/usePaginate";
-import { useAuth } from "@/contextStore/Index"; 
-import { useQuery } from "@tanstack/react-query"; 
+import { useAuth } from "@/contextStore/Index";
+import { useQuery } from "@tanstack/react-query";
 import React, { Suspense } from "react";
 import { useSearchParams } from "react-router";
 import ErrorAlert from "@/component/ErrorAlert";
@@ -70,23 +70,17 @@ export default function Appointments() {
             <ErrorAlert error={error?.response?.data?.message} />
           ) : (
             <>
-              {appointment?.length > 0 ? (
-                <>
-                  <Suspense fallback={<SkeletonTable />}>
-                    <Table appointment={appointment} />
-                  </Suspense>
-                  <Paginate
-                    totalPages={totalPages}
-                    hasMore={hasMore}
-                    handlePageChange={handlePageChange}
-                    currentPage={currentPage}
-                  />
-                </>
-              ) : (
-                <p className="mt-6  font-semibold text-center">
-                  No appointments found
-                </p>
-              )}
+              <>
+                <Suspense fallback={<SkeletonTable />}>
+                  <Table appointment={appointment} />
+                </Suspense>
+                <Paginate
+                  totalPages={totalPages}
+                  hasMore={hasMore}
+                  handlePageChange={handlePageChange}
+                  currentPage={currentPage}
+                />
+              </>
             </>
           )}
         </>
