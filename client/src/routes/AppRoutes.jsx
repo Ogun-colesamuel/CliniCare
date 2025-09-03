@@ -28,7 +28,7 @@ const Inpatients = lazy(() =>import("@/pages/sidebarPages/inpatient/Inpatients")
 const Users = lazy(() => import("@/pages/sidebarPages/user/User"));
 const Settings = lazy(() => import("@/pages/sidebarPages/settingsss/Settings"));
 const Account = lazy(() =>import("@/pages/sidebarPages/settingsss/account/Account"));
-const Password = lazy(() =>import("@/pages/sidebarPages/settingsss/password/password"));
+const Password = lazy(() =>import("@/pages/sidebarPages/settingsss/Password/Password"));
 const HealthRecord = lazy(() =>import("@/pages/sidebarPages/settingsss/healthRecord/HealthRecord"));
 const PatientAppointments = lazy(() => import("@/pages/sidebarPages/appointment/PatientAppointments"));
 const PatientPayments = lazy(() =>import("@/pages/sidebarPages/payment/PatientPayments"));
