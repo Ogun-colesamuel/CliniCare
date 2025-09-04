@@ -8,7 +8,7 @@ import RecentAppointments from "@/features/dashboard/RecentAppointments";
 import RecentPayments from "@/features/dashboard/RecentPayments";
 import StatsCard from "@/features/dashboard/StatsCard";
 import { useAuth } from "@/contextStore/Index"; 
-import { formatCurrency } from "@/utils/constants";
+import { formatCurrency } from "@/utils/constant"; 
 import { RiCalendarScheduleLine, RiLineChartLine } from "@remixicon/react";
 import { useQuery } from "@tanstack/react-query";
 

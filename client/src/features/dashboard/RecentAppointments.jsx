@@ -1,4 +1,4 @@
-import { SkeletonTable } from "@/components/LazyLoader";
+import { SkeletonTable } from "@/component/LazyLoader"; 
 import { lazy, Suspense, useMemo, useState } from "react";
 import { Link } from "react-router";
 const PatientsTable = lazy(() =>
